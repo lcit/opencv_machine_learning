@@ -1,2 +1,2 @@
 #!/bin/bash
-./build/main ./circle* 64 32 64 9
+./build/main ./img/circle* 64 32 64 9
