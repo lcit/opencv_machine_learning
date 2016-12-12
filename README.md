@@ -2,7 +2,7 @@ C++ - Simple CPU implementation of the HOG (Histogram of Oriented Grandients) ba
 
 The reference article: https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf
 
-'''C++
+```C++
 int main(int argc, char* argv[]){
 
     // open and display an image
@@ -23,6 +23,6 @@ int main(int argc, char* argv[]){
         std::cout << h << ",";
     std::cout << "\n";
 }
-'''
+```
 
 ![alt tag](https://raw.githubusercontent.com/lcit/HOG/master/img/HOG.png)
