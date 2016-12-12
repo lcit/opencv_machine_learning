@@ -5,9 +5,8 @@ The reference article: https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05
 ```C++
 int main(int argc, char* argv[]){
 
-    // open and display an image
+    // Open an image
     cv::Mat image = cv::imread(argv[1], CV_8U);
-    cv::imshow("original", image);
     
     // Retrieve the HOG from the image
     size_t blocksize = 64;
@@ -17,7 +16,7 @@ int main(int argc, char* argv[]){
     HOG hog(blocksize, cellsize, stride, binning);
     auto hist = hog.convert(image);
 
-	// print resulting histogram
+	// Print resulting histogram
     std::cout << "Histogram size: " << hist.size() << "\n";
     for(auto h:hist)
         std::cout << h << ",";
