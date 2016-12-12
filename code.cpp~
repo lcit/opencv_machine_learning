@@ -1,0 +1,133 @@
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/video/background_segm.hpp"
+#include <iostream>
+
+using namespace cv;
+using namespace std;
+
+class People{
+	public:
+		People():_x(0), _y(0){}
+		People(unsigned int x, unsigned int y):_x(x), _y(y){}
+		~People(){}	
+		void set_x(unsigned int x){_x=x;}
+		void set_y(unsigned int y){_y=y;}
+		unsigned int get_x(){return _x;}
+		unsigned int get_y(){return _y;}
+		void reset(){_x=0;_y=0;}	
+
+	private:
+		unsigned int x;
+		unsigned int y;
+};
+
+void draw_rect(Mat& src){
+	// Draw polygonal contour + bonding rects + circles
+	Mat drawing = Mat::zeros( threshold_output.size(), CV_8UC3 );
+	for( int i = 0; i< contours.size(); i++ ){
+       Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
+       drawContours( src, contours_poly, i, color, 1, 8, vector<Vec4i>(), 0, Point() );
+       rectangle( src, boundRect[i].tl(), boundRect[i].br(), color, 2, 8, 0 );
+     }
+}
+
+int main(int argc, char* argv[])
+{
+    //VideoCapture cap("./tennis_sample.mp4");
+	VideoCapture cap("./campus4-c1.avi");
+
+    if ( !cap.isOpened() ){
+         cout << "Cannot open the video file" << endl;
+         return -1;
+    }
+
+    //cap.set(CV_CAP_PROP_POS_MSEC, 300); //start the video at 300ms
+	int width = static_cast<int>(cap.get(CV_CAP_PROP_FRAME_WIDTH));
+	int height = static_cast<int>(cap.get(CV_CAP_PROP_FRAME_HEIGHT));
+
+	//create a windows
+    namedWindow("Video",WINDOW_NORMAL); 
+	namedWindow("Subtraction",WINDOW_AUTOSIZE);
+	namedWindow("Opening",WINDOW_AUTOSIZE);
+
+	Mat frame_old, frame_new;
+	Mat frame_old_grey, frame_new_grey, sub;
+
+    if (!cap.read(frame_old)){
+		cout << "Cannot read the frame from video file" << endl;
+		return -1;
+    }
+    if (!cap.read(frame_new)){
+		cout << "Cannot read the frame from video file" << endl;
+		return -1;
+    }
+	cvtColor( frame_new, frame_new_grey, CV_BGR2GRAY );
+	cvtColor( frame_old, frame_old_grey, CV_BGR2GRAY );
+
+	int n_frame = 0;
+
+	//Ptr<BackgroundSubtractor> pMOG2 = createBackgroundSubtractorMOG2();
+	int history=1000;
+	double dist2Threshold=100.0;
+	bool detectShadows=false;
+	Ptr<BackgroundSubtractor> pKNN = createBackgroundSubtractorKNN(history, 
+																	dist2Threshold,
+																	detectShadows);
+
+	Mat element1 = getStructuringElement( MORPH_ELLIPSE, Size(7,7));
+	Mat element2 = getStructuringElement( MORPH_ELLIPSE, Size(20,20));
+	
+    while(1){
+	//for(size_t i=0; i<2; i++){	
+	
+		n_frame = cap.get(CV_CAP_PROP_POS_FRAMES);
+		//cout << n_frame  << endl;
+
+		imshow("Video", frame_new);	
+
+		//subtract(frame_new_grey, frame_old_grey, sub);
+		//absdiff(frame_new_grey, frame_old_grey, sub);
+
+		double min, max;
+		//minMaxLoc(sub, &min, &max);
+
+		//divide(sub, max, sub);
+		//multiply(sub, 255.0, sub);
+		//threshold(sub, sub, 20.0, 255., THRESH_BINARY);
+
+		//blur( frame_new_grey, frame_new_grey, Size(40,40) );
+
+		//pMOG2->apply(frame_new_grey, sub);
+		pKNN->apply(frame_new_grey, sub);
+
+		imshow("Subtraction", sub);
+
+		/// Apply the specified morphology operation
+		blur( sub, sub, Size(20,20) );
+		//morphologyEx( sub, sub, MORPH_OPEN, element1 );
+		erode( sub, sub, element1 );
+		dilate( sub, sub, element2 );
+		threshold(sub, sub, 80.0, 255., CV_THRESH_BINARY);
+
+		imshow("Opening", sub);
+
+		frame_new_grey.copyTo(frame_old_grey);
+
+		if (!cap.read(frame_new)){
+			cout << "Cannot read the frame from video file" << endl;
+			break;
+		}
+		cvtColor( frame_new, frame_new_grey, CV_BGR2GRAY );
+
+		//wait for 'esc' key press for 30 ms
+        if(waitKey(30) == 27){
+			cout << "esc key is pressed by user" << endl; 
+			break; 
+       }
+
+    }
+
+    return 0;
+
+}
