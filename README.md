@@ -1,7 +1,7 @@
 C++ - Simple CPU implementation of the HOG (Histogram of Oriented Grandients) based on OpenCV's utility functions.
 
 The reference article: https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf
-'''
+'''C++
 int main(int argc, char* argv[]){
 
     // open and display an image
