@@ -114,6 +114,30 @@ main/fast:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+HOG.o: HOG.cpp.o
+.PHONY : HOG.o
+
+# target to build an object file
+HOG.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/HOG.cpp.o
+.PHONY : HOG.cpp.o
+
+HOG.i: HOG.cpp.i
+.PHONY : HOG.i
+
+# target to preprocess a source file
+HOG.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/HOG.cpp.i
+.PHONY : HOG.cpp.i
+
+HOG.s: HOG.cpp.s
+.PHONY : HOG.s
+
+# target to generate assembly for a file
+HOG.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/HOG.cpp.s
+.PHONY : HOG.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -138,30 +162,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-opencv_io.o: opencv_io.cpp.o
-.PHONY : opencv_io.o
-
-# target to build an object file
-opencv_io.cpp.o:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/opencv_io.cpp.o
-.PHONY : opencv_io.cpp.o
-
-opencv_io.i: opencv_io.cpp.i
-.PHONY : opencv_io.i
-
-# target to preprocess a source file
-opencv_io.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/opencv_io.cpp.i
-.PHONY : opencv_io.cpp.i
-
-opencv_io.s: opencv_io.cpp.s
-.PHONY : opencv_io.s
-
-# target to generate assembly for a file
-opencv_io.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/opencv_io.cpp.s
-.PHONY : opencv_io.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -171,12 +171,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
+	@echo "... HOG.o"
+	@echo "... HOG.i"
+	@echo "... HOG.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... opencv_io.o"
-	@echo "... opencv_io.i"
-	@echo "... opencv_io.s"
 .PHONY : help
 
 

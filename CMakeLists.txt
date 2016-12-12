@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 # Define project name
-project(convolution)
+project(HOG_project)
 
 add_definitions(-std=c++14)
 
@@ -26,10 +26,7 @@ message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 # Declare the executable target built from your sources
-add_executable(main main.cpp opencv_io.cpp)
+add_executable(main main.cpp HOG.cpp)
 
 # Link your application with OpenCV libraries
 target_link_libraries(main ${OpenCV_LIBS})
-
-# uses lates c++ standard
-#target_compile_features(main PRIVATE cxx_range_for)

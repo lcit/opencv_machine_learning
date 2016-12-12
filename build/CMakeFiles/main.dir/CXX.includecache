@@ -6,15 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/leo/Desktop/OpenCV_projects/HOG/main.cpp
-opencv_io.hpp
-/home/leo/Desktop/OpenCV_projects/HOG/opencv_io.hpp
+/home/leo/Desktop/OpenCV_projects/HOG/HOG.cpp
+HOG.hpp
+/home/leo/Desktop/OpenCV_projects/HOG/HOG.hpp
 opencv2/imgproc/imgproc.hpp
 /home/leo/Desktop/OpenCV_projects/HOG/opencv2/imgproc/imgproc.hpp
 opencv2/highgui/highgui.hpp
 /home/leo/Desktop/OpenCV_projects/HOG/opencv2/highgui/highgui.hpp
-opencv2/video/background_segm.hpp
-/home/leo/Desktop/OpenCV_projects/HOG/opencv2/video/background_segm.hpp
 iostream
 -
 algorithm
@@ -26,28 +24,38 @@ functional
 math.h
 -
 
-/home/leo/Desktop/OpenCV_projects/HOG/opencv_io.cpp
-opencv_io.hpp
-/home/leo/Desktop/OpenCV_projects/HOG/opencv_io.hpp
+/home/leo/Desktop/OpenCV_projects/HOG/HOG.hpp
 opencv2/imgproc/imgproc.hpp
 /home/leo/Desktop/OpenCV_projects/HOG/opencv2/imgproc/imgproc.hpp
 opencv2/highgui/highgui.hpp
 /home/leo/Desktop/OpenCV_projects/HOG/opencv2/highgui/highgui.hpp
-stdexcept
+iostream
+-
+algorithm
 -
 memory
+-
+functional
+-
+math.h
 -
 
-/home/leo/Desktop/OpenCV_projects/HOG/opencv_io.hpp
+/home/leo/Desktop/OpenCV_projects/HOG/main.cpp
+HOG.hpp
+/home/leo/Desktop/OpenCV_projects/HOG/HOG.hpp
 opencv2/imgproc/imgproc.hpp
 /home/leo/Desktop/OpenCV_projects/HOG/opencv2/imgproc/imgproc.hpp
 opencv2/highgui/highgui.hpp
 /home/leo/Desktop/OpenCV_projects/HOG/opencv2/highgui/highgui.hpp
-stdexcept
+iostream
 -
-map
+algorithm
 -
 memory
+-
+functional
+-
+math.h
 -
 
 /usr/local/include/opencv/cxcore.h

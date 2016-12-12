@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/leo/Desktop/OpenCV_projects/HOG/HOG.cpp" "/home/leo/Desktop/OpenCV_projects/HOG/build/CMakeFiles/main.dir/HOG.cpp.o"
   "/home/leo/Desktop/OpenCV_projects/HOG/main.cpp" "/home/leo/Desktop/OpenCV_projects/HOG/build/CMakeFiles/main.dir/main.cpp.o"
-  "/home/leo/Desktop/OpenCV_projects/HOG/opencv_io.cpp" "/home/leo/Desktop/OpenCV_projects/HOG/build/CMakeFiles/main.dir/opencv_io.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

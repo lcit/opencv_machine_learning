@@ -114,7 +114,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=convolution
+CMAKE_PROJECT_NAME:STATIC=HOG_project
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -274,6 +274,12 @@ CUDA_nppi_LIBRARY:FILEPATH=/usr/local/cuda/lib64/libnppi.so
 //"npps" library
 CUDA_npps_LIBRARY:FILEPATH=/usr/local/cuda/lib64/libnpps.so
 
+//Value Computed by CMake
+HOG_project_BINARY_DIR:STATIC=/home/leo/Desktop/OpenCV_projects/HOG/build
+
+//Value Computed by CMake
+HOG_project_SOURCE_DIR:STATIC=/home/leo/Desktop/OpenCV_projects/HOG
+
 //Path where debug 3rdparty OpenCV dependencies are located
 OpenCV_3RDPARTY_LIB_DIR_DBG:PATH=/usr/local/share/OpenCV/3rdparty/lib
 
@@ -290,12 +296,6 @@ OpenCV_LIB_DIR_DBG:PATH=
 
 //Path where release OpenCV libraries are located
 OpenCV_LIB_DIR_OPT:PATH=
-
-//Value Computed by CMake
-convolution_BINARY_DIR:STATIC=/home/leo/Desktop/OpenCV_projects/HOG/build
-
-//Value Computed by CMake
-convolution_SOURCE_DIR:STATIC=/home/leo/Desktop/OpenCV_projects/HOG
 
 
 ########################

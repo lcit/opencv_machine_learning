@@ -72,39 +72,39 @@ CMakeFiles/main.dir/main.cpp.o.provides: CMakeFiles/main.dir/main.cpp.o.requires
 
 CMakeFiles/main.dir/main.cpp.o.provides.build: CMakeFiles/main.dir/main.cpp.o
 
-CMakeFiles/main.dir/opencv_io.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/opencv_io.cpp.o: ../opencv_io.cpp
+CMakeFiles/main.dir/HOG.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/HOG.cpp.o: ../HOG.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/leo/Desktop/OpenCV_projects/HOG/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/main.dir/opencv_io.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/opencv_io.cpp.o -c /home/leo/Desktop/OpenCV_projects/HOG/opencv_io.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/main.dir/HOG.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/HOG.cpp.o -c /home/leo/Desktop/OpenCV_projects/HOG/HOG.cpp
 
-CMakeFiles/main.dir/opencv_io.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/opencv_io.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/leo/Desktop/OpenCV_projects/HOG/opencv_io.cpp > CMakeFiles/main.dir/opencv_io.cpp.i
+CMakeFiles/main.dir/HOG.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/HOG.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/leo/Desktop/OpenCV_projects/HOG/HOG.cpp > CMakeFiles/main.dir/HOG.cpp.i
 
-CMakeFiles/main.dir/opencv_io.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/opencv_io.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/leo/Desktop/OpenCV_projects/HOG/opencv_io.cpp -o CMakeFiles/main.dir/opencv_io.cpp.s
+CMakeFiles/main.dir/HOG.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/HOG.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/leo/Desktop/OpenCV_projects/HOG/HOG.cpp -o CMakeFiles/main.dir/HOG.cpp.s
 
-CMakeFiles/main.dir/opencv_io.cpp.o.requires:
-.PHONY : CMakeFiles/main.dir/opencv_io.cpp.o.requires
+CMakeFiles/main.dir/HOG.cpp.o.requires:
+.PHONY : CMakeFiles/main.dir/HOG.cpp.o.requires
 
-CMakeFiles/main.dir/opencv_io.cpp.o.provides: CMakeFiles/main.dir/opencv_io.cpp.o.requires
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/opencv_io.cpp.o.provides.build
-.PHONY : CMakeFiles/main.dir/opencv_io.cpp.o.provides
+CMakeFiles/main.dir/HOG.cpp.o.provides: CMakeFiles/main.dir/HOG.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/HOG.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/HOG.cpp.o.provides
 
-CMakeFiles/main.dir/opencv_io.cpp.o.provides.build: CMakeFiles/main.dir/opencv_io.cpp.o
+CMakeFiles/main.dir/HOG.cpp.o.provides.build: CMakeFiles/main.dir/HOG.cpp.o
 
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/main.cpp.o" \
-"CMakeFiles/main.dir/opencv_io.cpp.o"
+"CMakeFiles/main.dir/HOG.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/main.cpp.o
-main: CMakeFiles/main.dir/opencv_io.cpp.o
+main: CMakeFiles/main.dir/HOG.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: /usr/local/lib/libopencv_videostab.so.3.1.0
 main: /usr/local/lib/libopencv_superres.so.3.1.0
@@ -143,7 +143,7 @@ CMakeFiles/main.dir/build: main
 .PHONY : CMakeFiles/main.dir/build
 
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/main.cpp.o.requires
-CMakeFiles/main.dir/requires: CMakeFiles/main.dir/opencv_io.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/HOG.cpp.o.requires
 .PHONY : CMakeFiles/main.dir/requires
 
 CMakeFiles/main.dir/clean:
