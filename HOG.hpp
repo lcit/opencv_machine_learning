@@ -24,10 +24,12 @@ class HOG {
         using THist = std::vector<TType>;
         
         static constexpr TType epsilon = 1e-6;
-        static constexpr TType epsilon_squared = epsilon*epsilon;
         
         // see: https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients#Block_normalization
+        static void L1norm(THist& v);
+        static void L1sqrt(THist& v);
         static void L2norm(THist& v);
+        static void L2hys(THist& v);
         
     private:    
         const size_t _blocksize;
@@ -45,13 +47,13 @@ class HOG {
         
     public:
         HOG(const size_t blocksize, 
-            std::function<void(THist&)> block_norm = L2norm);
+            std::function<void(THist&)> block_norm = L2hys);
         HOG(const size_t blocksize, size_t cellsize, 
-            std::function<void(THist&)> block_norm = L2norm);
+            std::function<void(THist&)> block_norm = L2hys);
         HOG(const size_t blocksize, size_t cellsize, size_t stride, 
-            std::function<void(THist&)> block_norm = L2norm);
+            std::function<void(THist&)> block_norm = L2hys);
         HOG(const size_t blocksize, size_t cellsize, size_t stride, size_t binning = 9, 
-            std::function<void(THist&)> block_norm = L2norm);
+            std::function<void(THist&)> block_norm = L2hys);
         ~HOG();
         
         /// Retrieves the HOG from an image

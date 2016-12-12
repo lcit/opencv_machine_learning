@@ -20,13 +20,35 @@
 #include <math.h>
         
 // see: https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients#Block_normalization
+void HOG::L1norm(HOG::THist& v) {
+    HOG::TType den = std::accumulate(std::begin(v), std::end(v), 0.0f) + epsilon;
+    if(den != 0)
+        std::transform(std::begin(v), std::end(v), std::begin(v), [den](const HOG::TType nom){ return nom/den; });
+}
+
+void HOG::L1sqrt(HOG::THist& v) {
+    HOG::L1norm(v);
+    std::transform(std::begin(v), std::end(v), std::begin(v), [](const HOG::TType x){ return std::sqrt(x); });
+}
+
 void HOG::L2norm(HOG::THist& v) {
     HOG::THist temp = v; 
     std::transform(std::begin(v), std::end(v), std::begin(temp), [](const HOG::TType& x){ return x*x; });
-    HOG::TType den = std::accumulate(std::begin(temp), std::end(temp), 0);
-    den = std::sqrt(den + epsilon_squared);
+    HOG::TType den = std::accumulate(std::begin(temp), std::end(temp), 0.0f);
+    den = std::sqrt(den + epsilon);
     if(den != 0)
-        std::transform(std::begin(v), std::end(v), std::begin(v), [den](HOG::TType nom){ return nom/den; });
+        std::transform(std::begin(v), std::end(v), std::begin(v), [den](const HOG::TType nom){ return nom/den; });
+}
+
+void HOG::L2hys(HOG::THist& v) {
+    HOG::L2norm(v);
+    auto clip = [](const HOG::TType& x){ 
+        if(x > 0.2) return 0.2f; 
+        else if(x < 0) return 0.0f;
+        else return x;
+    };
+    std::transform(std::begin(v), std::end(v), std::begin(v), clip);
+    HOG::L2norm(v);
 }
 
 HOG::HOG(const size_t blocksize, std::function<void(HOG::THist&)> block_norm) 
@@ -115,8 +137,8 @@ cv::Mat HOG::get_vector_mask() {
     cv::Mat vector_mask = cv::Mat::zeros(norm.size(), CV_8U);
     
     // retrieve the max value of the final HOG histogram
-    //HOG::TType hist_max = *std::max_element(std::begin(img_hist), std::end(img_hist));
-    HOG::TType hist_mean = std::accumulate(std::begin(img_hist), std::end(img_hist), 0.0)/img_hist.size();
+    HOG::TType hist_max = *std::max_element(std::begin(img_hist), std::end(img_hist));
+    //HOG::TType hist_mean = std::accumulate(std::begin(img_hist), std::end(img_hist), 0.0)/img_hist.size();
     
     // iterates over all blcoks and cells
     size_t idx_blocks = 0;
@@ -136,10 +158,10 @@ cv::Mat HOG::get_vector_mask() {
                     // retrieve the max value of the this cell histogram
                     HOG::TType max = *std::max_element(std::begin(cell_hist), std::end(cell_hist));
                     //std::cout << "max=" << max << "\n";
-                    HOG::TType mean = std::accumulate(std::begin(cell_hist), std::end(cell_hist), 0.0)/cell_hist.size();
+                    //HOG::TType mean = std::accumulate(std::begin(cell_hist), std::end(cell_hist), 0.0)/cell_hist.size();
                     //std::cout << "mean=" << mean << "\n";
                     
-                    int color_magnitude = static_cast<int>(mean/hist_mean*255.0);
+                    int color_magnitude = static_cast<int>(max/hist_max*255.0);
                     //std::cout << "color_magnitude=" << color_magnitude << "\n";
                     
                     // iterates over the cell histogram
