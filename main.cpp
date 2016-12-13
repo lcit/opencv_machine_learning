@@ -1,13 +1,13 @@
-/*	=========================================================================
-	Author: Leonardo Citraro
-	Company:
-	Filename: main.cpp
-	Last modifed:   11.12.2016 by Leonardo Citraro
-	Description:    Test of the HOG feature
+/*  =========================================================================
+    Author: Leonardo Citraro
+    Company:
+    Filename: main.cpp
+    Last modifed:   11.12.2016 by Leonardo Citraro
+    Description:    Test of the HOG feature
 
-	=========================================================================
+    =========================================================================
     https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf
-	=========================================================================
+    =========================================================================
 */
 #include "HOG.hpp"
 #include "opencv2/imgproc/imgproc.hpp"

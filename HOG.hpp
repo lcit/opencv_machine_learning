@@ -1,14 +1,14 @@
-/*	=========================================================================
-	Author: Leonardo Citraro
-	Company:
-	Filename: HOG.cpp
-	Last modifed:   12.12.2016 by Leonardo Citraro
-	Description:    Straightforward (CPU based) implementation of the
+/*  =========================================================================
+    Author: Leonardo Citraro
+    Company:
+    Filename: HOG.cpp
+    Last modifed:   12.12.2016 by Leonardo Citraro
+    Description:    Straightforward (CPU based) implementation of the
                     HOG (Histogram of Oriented Gradients) using OpenCV
 
-	=========================================================================
+    =========================================================================
     https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf
-	=========================================================================
+    =========================================================================
 */
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
