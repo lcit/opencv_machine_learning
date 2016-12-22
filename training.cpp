@@ -213,21 +213,10 @@ int main(int argc, char* argv[]) {
     std::vector<TYPE> specificities;
     std::vector<TYPE> false_positive_rates;
     for(int k=0; k<10; k++) {
-        dataset->setTrainTestSplitRatio(0.7, true); // random split of the data
-        /*
-        cv::Mat train_idx = dataset->getTrainSampleIdx();
-        std::cout << train_idx.size() << "\n";
-        for(int i=0; i<train_idx.cols; ++i){
-            std::cout << train_idx.at<int>(i) << ", ";
-        }
-        std::cout << "\n";
-        cv::Mat test_idx = dataset->getTestSampleIdx();
         
-        for(int i=0; i<test_idx.cols; ++i){
-            std::cout << test_idx.at<int>(i) << ", ";
-        }
-        std::cout << "\n";
-        */
+        // random split of the data
+        dataset->setTrainTestSplitRatio(0.7, true);
+
         // training & test samples
         cv::Mat train_idx = dataset->getTrainSampleIdx();
         cv::Mat train_data = cv::ml::TrainData::getSubVector(mat_data, train_idx);//dataset->getTrainSamples();
@@ -236,17 +225,7 @@ int main(int argc, char* argv[]) {
         cv::Mat test_idx = dataset->getTestSampleIdx();
         cv::Mat test_data = cv::ml::TrainData::getSubVector(mat_data, test_idx);//dataset->getTestSamples();
         cv::Mat test_labels = cv::ml::TrainData::getSubVector(mat_labels, test_idx);//;//dataset->getTestResponses();
-        /*
-        std::cout << train_data.size() << "\n";
-        for(int i=0; i<train_data.rows; ++i){
-            std::cout << train_data.at<TYPE>(i,0) << ", " << train_data.at<TYPE>(i,1) << " label=" << train_labels.at<int>(i) << "\n";
-        }
-        std::cout << "\n";
-        for(int i=0; i<test_data.rows; ++i){
-            std::cout << test_data.at<TYPE>(i,0) << ", " << test_data.at<TYPE>(i,1) << " label=" << test_labels.at<int>(i) << "\n";
-        }
-        std::cout << "\n";
-        */
+
         clf->train(train_data, cv::ml::SampleTypes::ROW_SAMPLE, train_labels);
         
         // validation
@@ -309,6 +288,8 @@ int main(int argc, char* argv[]) {
     cv::imshow("data",graph);
     
     clf->save("clf.ext");
+    //cv::Ptr<cv::ml::KNearest> clf = cv::Algorithm::load<cv::ml::KNearest>("./clf.ext");
+    //cv::Ptr<cv::ml::SVM> clf = cv::Algorithm::load<cv::ml::SVM>("./clf.ext");
     
     std::cout << "Final training + save classifier done!\n";
     
